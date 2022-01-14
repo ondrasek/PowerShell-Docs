@@ -1208,6 +1208,19 @@ TypeName: System.Object[]
 ...
 ```
 
+> [!NOTE]
+> The `,$data` construct actually wraps the original array in a 1-element array and
+> uwraps it in the pipeline. This may present a performance tradeoff, depending on your 
+> particular scenarion.
+
+```powershell
+PS> $data = 1..10
+PS> $data.Count
+10
+PS> (,$data).Count
+1
+```
+
 ### Return an array
 
 This unwrapping of arrays also happens when you output or return values from a function. You can
